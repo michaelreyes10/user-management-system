@@ -3,8 +3,10 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const { config } = require('dotenv');
 
 require('dotenv').config();
+
 const app = express();
 const PORT = process.env.PORT || 3005
 
@@ -18,7 +20,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 //template
-app.engine('hbs', exphbs({extname: '.hbs'}));
+app.engine('hbs', exphbs.engine({extname: '.hbs'}));
 app.set('view engine', 'hbs');
 
 //ROUTE
